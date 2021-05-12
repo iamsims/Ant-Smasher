@@ -3,8 +3,7 @@ const SPEED = 1;
 const REFRESH_TIME= 10;
 
 //used to control ball
-const BALLRADIUS = 10;
-const BALLCOUNT= 10;
+const ANTCOUNT= 10;
 
 //direction either decreasing on x-axis or increasing
 const DIRECTION=[-1,1];
