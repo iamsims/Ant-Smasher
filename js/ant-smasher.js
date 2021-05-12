@@ -6,19 +6,16 @@ style.marginTop = "20px";
 var parentStyle = canvas.parentElement.style;
 parentStyle.textAlign = "center";
 parentStyle.width = "100%";
-
-
 canvasLeft = canvas.offsetLeft + canvas.clientLeft;
 canvasTop = canvas.offsetTop + canvas.clientTop;
-
 canvas.addEventListener('mousedown', function(event) { 
     check(event, canvasLeft, canvasTop);
 });
 
-var ants =[];
 
+var ants =[];
 for(let i =0;i<ANTCOUNT; i++){
-    ants[i] = new Ant(SPEED);
+    ants[i] = new Ant(SPEED,ANTWIDTH,ANTHEIGHT,"images/ant2.png");
 }
 
 function draw() {

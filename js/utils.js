@@ -1,14 +1,13 @@
-function Ant(speed){
+function Ant(speed, width, height, image){
     this.slope = randomNumber(-1,1);
     this.direction = DIRECTION[Math.floor(Math.random() * DIRECTION.length)];
-    this.bgImage = new Image()
-    this.bgImage.src = "images/ant2.png";
-    this.width =20;
-    this.height =30;
+    this.bgImage = new Image();
+    this.bgImage.src = image;
+    this.width =width;
+    this.height =height;
     this.x= randomNumber(0, WIDTH-this.width);
     this.y= randomNumber(0, HEIGHT-this.height);
     
-
     this.dx= speed*this.direction;
     this.dy= -1*this.slope*this.dx;
 
@@ -32,8 +31,8 @@ function Ant(speed){
                         this.dx = -this.dx;
                         this.dy = -this.dy;
 
-                        this.x-=distX/2;
-                        this.y-=distY/2; 
+                        this.x-=distX/ANTCOUNT;
+                        this.y-=distY/ANTCOUNT; 
 
                     if(this.x<0)this.x=0;
                     if(this.x>WIDTH-this.width) this.x= WIDTH-this.width;
@@ -46,7 +45,6 @@ function Ant(speed){
         }.bind(this)
         );
 
-
         if(this.y + this.dy > HEIGHT-this.height || this.y + this.dy < 0) {
             this.dy = -this.dy;
         }
@@ -54,7 +52,6 @@ function Ant(speed){
         if(this.x + this.dx > WIDTH-this.width || this.x + this.dx < 0) {
             this.dx = -this.dx;
         }
-
 
         this.x += this.dx;
         this.y += this.dy;  
