@@ -4,7 +4,7 @@ function Ant(speed){
     this.bgImage = new Image()
     this.bgImage.src = "images/ant2.png";
     this.width =20;
-    this.height =40;
+    this.height =30;
     this.x= randomNumber(0, WIDTH-this.width);
     this.y= randomNumber(0, HEIGHT-this.height);
     
@@ -22,6 +22,8 @@ function Ant(speed){
     this.update =(myIndex)=>{
 
         ants.forEach(function(ant, index){
+            distX=ant.x- this.x; 
+            distY=ant.y- this.y;
             if(index!=myIndex){
                 if (this.x < ant.x + ant.width &&
                     this.x + this.width> ant.x &&
@@ -29,6 +31,15 @@ function Ant(speed){
                     this.y+ this.height > ant.y) {
                         this.dx = -this.dx;
                         this.dy = -this.dy;
+
+                        this.x-=distX/2;
+                        this.y-=distY/2; 
+
+                    if(this.x<0)this.x=0;
+                    if(this.x>WIDTH-this.width) this.x= WIDTH-this.width;
+                    if(this.y<0)this.y=0;
+                    if(this.y>HEIGHT-this.height) this.y= HEIGHT-this.height;
+                    
                     }
             
             }
@@ -53,3 +64,15 @@ function Ant(speed){
 function randomNumber(min, max) { 
     return Math.random() * (max - min) + min;
 };
+
+function check(event, canvasLeft, canvasTop){
+    var x = event.pageX - canvasLeft;
+    var y = event.pageY - canvasTop;
+
+    ants.forEach(function(element, index) {
+        if (y > element.y && y < element.y + element.height 
+            && x > element.x && x < element.x + element.width) {
+            ants.splice(index,1);
+        }
+    });
+}

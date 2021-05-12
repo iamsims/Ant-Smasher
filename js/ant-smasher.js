@@ -11,18 +11,8 @@ parentStyle.width = "100%";
 canvasLeft = canvas.offsetLeft + canvas.clientLeft;
 canvasTop = canvas.offsetTop + canvas.clientTop;
 
-
-canvas.addEventListener('mousedown', function(event) {
-    var x = event.pageX - canvasLeft;
-    var y = event.pageY - canvasTop;
-
-    ants.forEach(function(element, index) {
-        if (y > element.y && y < element.y + element.height 
-            && x > element.x && x < element.x + element.width) {
-            ants.splice(index,1);
-        }
-    });
-
+canvas.addEventListener('mousedown', function(event) { 
+    check(event, canvasLeft, canvasTop);
 });
 
 var ants =[];
