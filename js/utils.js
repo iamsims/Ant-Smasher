@@ -2,7 +2,7 @@ function Ant(speed){
     this.slope = randomNumber(-1,1);
     this.direction = DIRECTION[Math.floor(Math.random() * DIRECTION.length)];
     this.bgImage = new Image()
-    this.bgImage.src = "images/relacement.png";
+    this.bgImage.src = "images/ant2.png";
     this.width =20;
     this.height =40;
     this.x= randomNumber(0, WIDTH-this.width);
